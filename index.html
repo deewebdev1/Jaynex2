@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaynex Tech Free Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Orbitron',sans-serif;background:#23003C;color:#fff;overflow-x:hidden;}
+
+/* Header */
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;position:fixed;width:100%;top:0;background:linear-gradient(90deg,#2e004d,#150025);z-index:1000;}
+header h1{color:#E3A7FF;font-size:1.6rem;font-weight:bold;}
+header .cta{padding:12px 25px;border:none;font-weight:bold;background:linear-gradient(90deg,#E3A7FF,#a35fff);border-radius:50px;color:#23003C;text-decoration:none;font-family:'Rajdhani',sans-serif;position:relative;overflow:hidden;transition:0.3s;}
+header .cta:hover{transform:scale(1.1);}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#23003C,#8000FF);padding:0 20px;}
+.hero h2{font-size:2.4rem;margin-bottom:20px;color:#E3A7FF;font-weight:bold;text-shadow:0 0 15px #E3A7FF;animation:wiggle 2s infinite;}
+.hero p{font-size:1.2rem;margin-bottom:30px;}
+.hero button{padding:15px 40px;font-size:1.2rem;font-weight:bold;border:none;border-radius:50px;background:linear-gradient(90deg,#E3A7FF,#a35fff);color:#23003C;cursor:pointer;animation:popVibrate 1.5s infinite;}
+@keyframes popVibrate{0%,100%{transform:scale(1) rotate(0deg);}25%{transform:scale(1.1) rotate(-2deg);}50%{transform:scale(1.05) rotate(2deg);}75%{transform:scale(1.1) rotate(-2deg);}}
+@keyframes wiggle{0%,100%{transform:rotate(-2deg);}25%{transform:rotate(2deg);}50%{transform:rotate(-2deg);}75%{transform:rotate(2deg);}}
+
+/* Stats */
+.stats{background:#2e004d;padding:80px 20px;text-align:center;}
+.stats-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;}
+.stats h3{font-size:2.5rem;color:#E3A7FF;font-weight:bold;}
+
+/* About */
+.about{padding:100px 20px;background:#150025;text-align:center;opacity:0;transform:translateY(50px);transition:all 1s;}
+.about.visible{opacity:1;transform:translateY(0);}
+.about h2{color:#E3A7FF;font-size:2rem;margin-bottom:20px;font-weight:bold;}
+.about p{max-width:800px;margin:auto;font-size:1.1rem;line-height:1.7;}
+
+/* Testimonials */
+.testimonials{padding:80px 20px;background:#23003C;text-align:center;}
+.testimonials h2{color:#E3A7FF;font-size:2rem;margin-bottom:40px;font-weight:bold;}
+.testi-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+.testi-card{background:#2e004d;border:3px solid #E3A7FF;border-radius:12px;padding:25px;box-shadow:0 0 25px rgba(227,167,255,0.3);opacity:0;transform:rotateY(90deg);transition:all 1s;}
+.testi-card.visible{opacity:1;transform:rotateY(0);}
+.testi-card p{font-size:1rem;font-style:italic;}
+.testi-card h4{margin-top:15px;color:#E3A7FF;font-weight:bold;}
+
+/* CEO */
+.ceo{padding:100px 20px;background:#150025;opacity:0;transform:translateY(50px);transition:all 1s;}
+.ceo.visible{opacity:1;transform:translateY(0);}
+.ceo-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center;}
+.ceo img{width:100%;max-width:300px;border-radius:80%;border:4px solid #E3A7FF;box-shadow:0 0 25px rgba(227,167,255,0.6);}
+.ceo h2{color:#E3A7FF;font-size:2rem;font-weight:bold;}
+
+/* Certificate */
+.certificate{padding:100px 20px;text-align:center;background:#23003C;opacity:0;transform:translateY(50px);transition:all 1s;}
+.certificate.visible{opacity:1;transform:translateY(0);}
+.certificate h2{color:#E3A7FF;font-size:2rem;margin-bottom:20px;font-weight:bold;}
+.certificate img{width:100%;max-width:500px;border-radius:12px;box-shadow:0 0 35px rgba(227,167,255,0.5);}
+
+/* CTA */
+.cta-section{padding:80px 20px;background:linear-gradient(90deg,#150025,#2e004d);text-align:center;opacity:0;transform:translateY(50px);transition:all 1s;}
+.cta-section.visible{opacity:1;transform:translateY(0);}
+.cta-btn{padding:15px 35px;font-size:1.1rem;font-weight:bold;color:#fff;border:none;border-radius:50px;cursor:pointer;background:linear-gradient(90deg,#E3A7FF,#8000FF,#E3A7FF);animation:popVibrate 1.5s infinite;}
+
+/* Countdown */
+.countdown{padding:100px 20px;background:#150025;text-align:center;opacity:0;transform:translateY(50px);transition:all 1s;}
+.countdown.visible{opacity:1;transform:translateY(0);}
+.countdown h2{color:#E3A7FF;margin-bottom:20px;font-weight:bold;}
+.time-box{background:#2E004D;padding:20px 30px;border-radius:12px;box-shadow:0 0 20px rgba(227,167,255,0.4);font-family:'Orbitron',sans-serif;text-align:center;min-width:100px;}
+.time-box span{font-size:2.5rem;font-weight:bold;color:#E3A7FF;display:block;}
+
+footer{background:#1a002c;padding:40px 20px;text-align:center;color:#bbb;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Jaynex Tech</h1>
+  <a href="https://chat.whatsapp.com/CtOtfiv2gwi2UtVQ053F2Q" target="_blank" class="cta">Join Free Training</a>
+</header>
+
+<section class="hero">
+  <h2>TURN YOUR SMARTPHONE INTO A WEBSITE-MAKING MACHINE!</h2>
+  <p>5 days, full practical web development training. No laptop? No problem. No experience? Even better.</p>
+  <a href="https://chat.whatsapp.com/CtOtfiv2gwi2UtVQ053F2Q" target="_blank">
+    <button>JOIN FREE TRAINING NOW 🚀</button>
+  </a>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div><h3><span class="counter" data-target="10000">0</span>+</h3><p>Students Trained</p></div>
+    <div><h3><span class="counter" data-target="95">0</span>%</h3><p>Practical Learning</p></div>
+    <div><h3><span class="counter" data-target="5">0</span> Days</h3><p>Intensive Free Class</p></div>
+  </div>
+</section>
+
+<section class="about">
+  <h2>WHY JOIN THIS FREE TRAINING?</h2>
+  <p>At <b>Jaynex Tech</b>, we don’t just teach – we transform. Whether you’re a beginner or looking to sharpen your skills, our <b>5-Day WhatsApp Class</b> will open doors you never imagined. And yes – <b>it’s totally free</b>! 🚀</p>
+</section>
+
+<section class="testimonials">
+  <h2>WHAT OUR STUDENTS ARE SAYING</h2>
+  <div class="testi-grid">
+    <div class="testi-card"><p>“I honestly never believed I could build a website in just 5 days. This training changed my mindset completely.”</p><h4>– Chinedu Okafor</h4></div>
+    <div class="testi-card"><p>“From day one, I knew this class was special. The teaching, the community, everything was top notch.”</p><h4>– Aisha Bello</h4></div>
+    <div class="testi-card"><p>“This free training feels like something I should have paid thousands for. I can’t thank Jaynex Tech enough.”</p><h4>– Tolu Adeyemi</h4></div>
+    <div class="testi-card"><p>“When I saw the advert, I thought it was hype. But this training blew my mind. Real practicals, real results.”</p><h4>– Fatima Kareem</h4></div>
+    <div class="testi-card"><p>“I was struggling with tech before, but this training gave me confidence. My friends are shocked.”</p><h4>– Ibrahim Lawal</h4></div>
+    <div class="testi-card"><p>“This class lit fire inside me. I’m ready to pursue tech seriously now, thanks to Jaynex Tech.”</p><h4>– Esther Oladipo</h4></div>
+    <div class="testi-card"><p>“5 days? I can’t believe the transformation. The best learning experience I’ve had online.”</p><h4>– Samuel Abiola</h4></div>
+    <div class="testi-card"><p>“It was like family. The mentorship was priceless. I’m so grateful I joined.”</p><h4>– Maryam Sani</h4></div>
+  </div>
+</section>
+
+<section class="ceo">
+  <div class="ceo-grid">
+    <div><img src="Ceo.png" alt="Olatunde Jeremiah - Deewebdev"></div>
+    <div>
+      <h2>MEET THE VISIONARY</h2>
+      <p><b>Olatunde Jeremiah (Deewebdev)</b> is a passionate web developer and brand designer raising Africa’s next generation of digital creators.</p>
+      <p>His mission: <b>Equip young Africans with the skills to build, earn, and thrive in the digital economy</b>. Already, <b>10,000+ learners</b> have been impacted worldwide.</p>
+    </div>
+  </div>
+</section>
+
+<section class="certificate">
+  <h2>EARN YOUR CERTIFICATE OF COMPLETION</h2>
+  <p>Complete the <b>5-Day Free Training</b> and get a verifiable <b>Certificate of Completion</b>.</p> <br>
+  <div><img src="certificate.png" alt="Certificate"></div>
+</section>
+
+<section class="cta-section">
+  <h2>READY TO TRANSFORM YOUR FUTURE?</h2>
+<br>  <a href="https://chat.whatsapp.com/CtOtfiv2gwi2UtVQ053F2Q" target="_blank">
+    <button class="cta-btn">JOIN FREE CLASS NOW 🚀</button>
+  </a>
+</section>
+
+<section class="countdown">
+  <h2>CLASS STARTS SOON ⏳</h2>
+  <div id="countdown" style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+    <div class="time-box"><span id="days">00</span><p>Days</p></div>
+    <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+    <div class="time-box"><span id="minutes">00</span><p>Minutes</p></div>
+    <div class="time-box"><span id="seconds">00</span><p>Seconds</p></div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Jaynex Tech. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Intersection Observer for Counters
+const counterObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const counters=document.querySelectorAll('.counter');
+      counters.forEach(counter=>{
+        const target=+counter.getAttribute('data-target');
+        let count=0;
+        const step=target/200;
+        const interval=setInterval(()=>{
+          count+=step;
+          if(count>=target){counter.innerText=target; clearInterval(interval);}
+          else{counter.innerText=Math.ceil(count);}
+        },10);
+      });
+      counterObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.5});
+counterObserver.observe(document.querySelector('.stats'));
+
+// Intersection Observer for Testimonials & Sections
+const observerOptions={threshold:0.5};
+const sectionObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},observerOptions);
+document.querySelectorAll('.testi-card, .about, .ceo, .certificate, .cta-section, .countdown').forEach(el=>sectionObserver.observe(el));
+
+// Countdown
+const countDownDate=new Date("Sep 20, 2025 00:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const dist=countDownDate-now;
+
+  if(dist<0){
+    document.getElementById("countdown").innerHTML="<h3 style='color:#E3A7FF;'>Class has started! 🎉</h3>";
+    return;
+  }
+
+  const days=Math.floor(dist/(1000*60*60*24));
+  const hours=Math.floor((dist%(1000*60*60*24))/(1000*60*60));
+  const minutes=Math.floor((dist%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((dist%(1000*60))/1000);
+
+  document.getElementById("days").innerText=days<10?'0'+days:days;
+  document.getElementById("hours").innerText=hours<10?'0'+hours:hours;
+  document.getElementById("minutes").innerText=minutes<10?'0'+minutes:minutes;
+  document.getElementById("seconds").innerText=seconds<10?'0'+seconds:seconds;
+},1000);
+</script>
+</body>
+</html>
